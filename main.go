@@ -6,19 +6,20 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"text/template"
 	"time"
 )
 
 type Artist struct {
-	ID           int            `json:"id"`
-	Image        string         `json:"image"`
-	Name         string         `json:"name"`
+	ID           int      `json:"id"`
+	Image        string   `json:"image"`
+	Name         string   `json:"name"`
 	Members      []string `json:"members"`
-	CreationDate int            `json:"creationDate"`
-	FirstAlbum   string         `json:"firstAlbum"`
-	Locations    string         `json:"locations"`
-	ConcertDates string         `json:"concertDates"`
-	Relations    string         `json:"relations"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
+	Locations    string   `json:"locations"`
+	ConcertDates string   `json:"concertDates"`
+	Relations    string   `json:"relations"`
 }
 
 type Artists []Artist
@@ -46,19 +47,19 @@ func fetchJSON() {
 		fmt.Println("Error: Reading from repsonse body")
 		return
 	}
-	
+
 	err = json.Unmarshal(body, &data)
 	if err != nil {
 		fmt.Println("Error unmarshalling JSON body", err)
 		fmt.Println("body: ", string(body))
 		return
 	}
-	fmt.Println("fetched data: ", data)
 }
 
 func artistHandler(w http.ResponseWriter, r *http.Request) {
 	fetchJSON()
-	
+	tmpl := template.Must(template.ParseFiles("index.html"))
+	tmpl.Execute(w, data)
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -66,6 +67,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func handlerFunctions() {
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/artists", artistHandler)
 	fmt.Println("Server is running...")
