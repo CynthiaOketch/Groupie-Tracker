@@ -6,19 +6,20 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 )
 
 // Define structs for API response
 type Artist struct {
-	ID       int      `json:"id"`
-	Image    string   `json:"image"`
-	Name     string   `json:"name"`
-	Members  []string `json:"members"`
-	Creation int   `json:"creationDate"`
-	Album    string   `json:"firstAlbum"`
-	Location string   `json:"locations"`
-	Concert  string      `json:"concertDates"`
-	Relation string   `json:"relations"`
+	ID           int      `json:"id"`
+	Image        string   `json:"image"`
+	Name         string   `json:"name"`
+	Members      []string `json:"members"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
+	Locations    string   `json:"locations"`
+	ConcertDates string   `json:"concertDates"`
+	Relations    string   `json:"relations"`
 }
 
 type Location struct {
@@ -90,8 +91,12 @@ var apiURL = "https://groupietrackers.herokuapp.com/api/"
 // }
 
 func fetchData(url string, target interface{}) error {
-	resp, err := http.Get(url)
+	client := &http.Client{
+		Timeout: 10 * time.Second, // timeout the request if response is delayed
+	}
+	resp, err := client.Get(url)
 	if err != nil {
+		fmt.Printf("error fetching JSON from %s", url)
 		return err
 	}
 	defer resp.Body.Close()
@@ -102,10 +107,11 @@ func fetchData(url string, target interface{}) error {
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
+		fmt.Println("Error: Reading from repsonse body")
 		return err
 	}
 
-	return json.Unmarshal(body, target)
+	return json.Unmarshal(body, &target)
 }
 
 func loadData() {
