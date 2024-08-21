@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
@@ -25,7 +23,7 @@ body {
     position: relative;
     display: block;
     height: 100%;
-    border-radius: 40px;
+    border-radius: calc(40*1px);
     overflow: hidden;
     text-decoration: none;
 }
@@ -41,14 +39,26 @@ body {
     left: 0;
     right: 0;
     z-index: 1;
-    border-radius: 40px;
+    border-radius: calc(40*1px);
     background-color: #3f7ca8;
     transform: translateY(100%);
     transition: .2s ease-in-out;
 }
 
 .card:hover .card-overlay {
-    transform: translateY(0%);
+    transform: translateY(0);
+}
+
+.card-details {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: calc(40*1px) 0 0 0;
+    background-color: #3f7ca8;
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
 }
 
 .card-arc {
@@ -60,16 +70,13 @@ body {
     z-index: 1;
 }
 
-.card-details {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding: 2em;
-    border-radius: 40px 0 0 0;
-    background-color: #3f7ca8;
-    transform: translateY(-100%);
-    transition: .2s ease-in-out;
+.card-arc path {
+    fill: #3f7ca8;
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.card:hover .card-details {
+    transform: translateY(0);
 }
 
 .card-thumbnail {
