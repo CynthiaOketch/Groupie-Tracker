@@ -75,9 +75,6 @@ func Artists(w http.ResponseWriter, r *http.Request) {
 			Relations: relations,
 		},
 	}
-
-	fmt.Println(dataRes.Data)
-
 	tmpl.Execute(w, dataRes)
 }
 
