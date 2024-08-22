@@ -22,73 +22,51 @@ type Artist struct {
 	Relations    string   `json:"relations"`
 }
 
+type Locations struct {
+	Index []Location
+}
+
 type Location struct {
-	ID    int    `json:"id"`
-	Name  string `json:"locations"`
-	Dates string `json:"dates"`
+	ID       int      `json:"id"`
+	Location []string `json:"locations"`
+	Dates    string   `json:"dates"`
+}
+
+type Dates struct {
+	Index []Date
 }
 
 type Date struct {
-	ID   int    `json:"id"`
-	Date string `json:"dates"`
+	ID   int      `json:"id"`
+	Date []string `json:"dates"`
+}
+type Relations struct {
+	Index []Relation
+}
+type Relation struct {
+	ID       int        `json:"id"`
+	DateLocs DateLocs
 }
 
-type Relation struct {
-	ID       int      `json:"id"`
-	DateLocs []string `json:"datesLocations"`
+type DateLocs struct {
+	DateLoc []string `json:"datesLocations"`
 }
 
 type Data struct {
 	Artists   []Artist
-	Locations []Location
-	Dates     []Date
-	Relations []Relation
+	Locations Locations
+	Dates     Dates
+	Relations Relations
 }
 
 var (
 	artists   []Artist
-	locations []Location
-	dates     []Date
-	relations []Relation
+	locations Locations
+	dates     Dates
+	relations Relations
 )
 
 var apiURL = "https://groupietrackers.herokuapp.com/api/"
-
-// FetchData fetches data from the API and stores it in the Data struct
-// func FetchData() (*Data, error) {
-// 	data := &Data{}
-
-// 	endpoints := map[string]interface{}{
-// 		"artists":   &data.Artists,
-// 		"locations": &data.Locations,
-// 		"dates":     &data.Dates,
-// 		"relations": &data.Relations,
-// 	}
-
-// 	for endpoint, target := range endpoints {
-// 		url := apiURL + endpoint
-// 		resp, err := http.Get(url)
-// 		if err != nil {
-// 			return nil, err
-// 		}
-// 		defer resp.Body.Close()
-
-// 		if resp.StatusCode != http.StatusOK {
-// 			return nil, fmt.Errorf("failed to fetch %s: %s", endpoint, resp.Status)
-// 		}
-
-// 		body, err := io.ReadAll(resp.Body)
-// 		if err != nil {
-// 			return nil, err
-// 		}
-
-// 		if err := json.Unmarshal(body, target); err != nil {
-// 			return nil, err
-// 		}
-// 	}
-
-// 	return data, nil
-// }
 
 func fetchData(url string, target interface{}) error {
 	client := &http.Client{
@@ -99,22 +77,25 @@ func fetchData(url string, target interface{}) error {
 		fmt.Printf("error fetching JSON from %s", url)
 		return err
 	}
+	
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("failed to fetch data from %s: %s", url, resp.Status)
 	}
+	
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Println("Error: Reading from repsonse body")
 		return err
 	}
+	fmt.Println(len(body))
 
 	return json.Unmarshal(body, &target)
 }
 
-func loadData() {
+func LoadData() {
 	var err error
 	if err = fetchData("https://groupietrackers.herokuapp.com/api/artists", &artists); err != nil {
 		log.Fatalf("Error fetching artists: %v", err)
@@ -125,7 +106,8 @@ func loadData() {
 	if err = fetchData("https://groupietrackers.herokuapp.com/api/dates", &dates); err != nil {
 		log.Fatalf("Error fetching dates: %v", err)
 	}
-	if err = fetchData("https://groupietrackers.herokuapp.com/api/relations", &relations); err != nil {
+	if err = fetchData("https://groupietrackers.herokuapp.com/api/relation", &relations); err != nil {
 		log.Fatalf("Error fetching relations: %v", err)
 	}
+	// fmt.Println(len(artists), len(locations), len(dates), len(relations))
 }
