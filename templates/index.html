@@ -10,25 +10,23 @@
     <title>Groupie Tracker</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
-                <h1>Groupie Tracker</h1>
-            </div>
-            <div class="right">
-              <div class="search-container">
-                <input type="text" placeholder="search ...">
-                <button type="submit" id="search-btn">search</button>
-              </div>
-              <ul class="nav-links">
-                  <li><a href="/artists.html" action="/artists" method="get" class="cta-button fade-in-up">Artists</a></li>
-                  <li><a href="/concert.html" action="/concerts" method="get" class="cta-button fade-in-up">Concerts</a></li>
-                  <li><a href="/about.html" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="max-height: 5px;"></i>About Us</a></li>
-              </ul>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
+      </div>
+      <h1>Groupie Tracker</h1>
+      <nav>
+          <a href="/artists" action="/artists" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-headset"></i>Artists</a>
+          <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
+          <a href="/about" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="size: small;"></i>About Us</a>
+      </nav>
+        <div class="search-container">
+          <input type="text" placeholder="search ...">
+          <button type="submit" id="search-btn">search</button>
+        </div>
+    </div>
+  </header>
 
     <main>
         <section class="hero">
@@ -40,11 +38,13 @@
           <div class="feature fade-in-up">
             <i class="fas fa-users"></i>
             <h3>Concerts</h3>
+            <a href="/concerts" action="/concerts" method="get"></a>
             <p>Connect directly with your beloved artists on their tours</p>
           </div>
           <div class="feature fade-in-up">
             <i class="fas fa-globe-africa"></i>
             <h3>Locations</h3>
+            <a href="/locations" action="/locations" method="get"></a>
             <p>Sign up for a surreal experience</p>
           </div>
         </section>
@@ -53,7 +53,9 @@
       </main>
 
       <footer>
-        <p>&copy; 2024 Groupie Tracker.</p>
-      </footer>
+        <div>
+            <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

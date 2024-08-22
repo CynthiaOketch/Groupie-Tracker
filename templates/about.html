@@ -5,55 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
+    <link rel="stylesheet" href="/static/style/about.css">
     <title>About Us</title>
 </head>
 <body>
+  <body>
     <header>
-
+        <div class="header-container">
+          <div class="logo">
+            <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
+          </div>
+            <h1>About Us</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/artists">Artists</a>
+                <a href="/concerts">Concerts</a>
+            </nav>
+            <!-- <div class="search-container">
+                <input type="text" placeholder="search ...">
+                <button type="submit" id="search-btn">search</button>
+            </div> -->
+        </div>
+        
     </header>
-
     <main>
 
-        <section id="about" class="about">
-            <h2>About Us</h2>
-            <div class="aboutus">
-              <div class="step fade-in-up">
-                <div class="members">1</div>
-                <h3>Contributors</h3>
-                <p>Skills</p>
-              </div>
-              <div class="step fade-in-up">
-                <div class="aboutus">2</div>
-                <h3>Member2</h3>
-                <p>Skills</p>
-              </div>
-              <div class="step fade-in-up">
-                <div class="aboutus">3</div>
-                <h3>Member3</h3>
-                <p>Skills</p>
-              </div>
-            </div>
-          </section>
-      
-          <section id="locations" class="locations">
-              <ul id="list">
-                  <li><i class="fa-brands fa-github"></i><a href="https://github.com/Murzuqisah/" target="_blank">Joel Adero</a></li>
-                  <p class="about">
-                       Joel is an apprentice software developer with a knack for creating engaging web applications. 
-                       His expertise in frontend development and passion for clean design have been instrumental in shaping this project.
-                  </p>
-                  <li><i class="fa-brands fa-github"></i><a href="https://github.com//" target="_blank">JP</a></li>
-                  <p class="about">
-                        is an apprentice software developer whose backend skills in building scalable and efficient server-side solutions are unmatched. 
-                       His skills ensure that our ASCII art generator performs smoothly and reliably.
-                  </p>
-                  <li><i class="fa-brands fa-github"></i><a href="https://github.com//" target="_blank">Cynthia</a></li>
-                  <p class="about">
-                        an apprentice software developer whose UI/UX design skills in creating intuitive and visually appealing user experiences are unfathomable. 
-                       His design work ensures that our tool is not only functional but also user-friendly.
-                  </p>
-              </ul><br>
-          </section>
+      <div class="container">
+          <div class="card__container">
+            <article class="card__article">
+                <img src="/static/images/kenny-eliason-5afenxnLDjs-unsplash.jpg" alt="image" class="card__img">
+
+                <div class="card__data">
+                  <span class="card__description">Cynthia</span>
+                  <h2 class="card__title">The Great Developer</h2>
+                  <a href="#" class="card__button">Read More</a>
+                </div>
+            </article>
+
+            <article class="card__article">
+                <img src="/static/images/possessed-photography-g29arbbvPjo-unsplash.jpg" alt="image" class="card__img">
+
+                <div class="card__data">
+                  <span class="card__description">John Paul</span>
+                  <h2 class="card__title">Backend Developer</h2>
+                  <a href="#" class="card__button">Read More</a>
+                </div>
+            </article>
+
+            <article class="card__article">
+                <img src="/static/images/possessed-photography-JjGXjESMxOY-unsplash.jpg" alt="image" class="card__img">
+
+                <div class="card__data">
+                  <span class="card__description">Joel</span>
+                  <h2 class="card__title">Frontend Nation</h2>
+                  <a href="#" class="card__button">Read More</a>
+                </div>
+            </article>
+          </div>
+      </div>
+        
     </main>
+    <footer>
+      <div>
+          <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
+      </div>
+  </footer>
 </body>
+
 </html>
+
+<!-- <body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
+      </div>
+      <h1>Groupie Tracker</h1>
+      <nav>
+        <a href="/" action="/" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-home-alt"></i>Home</a>
+        <a href="/artists" action="/artists" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-headset"></i>Artists</a>
+        <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <div class="team-members">
+            <div class="team-member-card">
+                <img src="/static/images/kenny-eliason-5afenxnLDjs-unsplash.jpg" alt="Joel Adero" class="member-image">
+                <div class="member-info">
+                    <h3><a href="https://github.com/Murzuqisah/" target="_blank">Joel Adero</a></h3>
+                    <p>Joel is an apprentice software developer with a knack for creating engaging web applications. His expertise in frontend development and passion for clean design have been instrumental in shaping this project.</p>
+                </div>
+            </div>
+            <div class="team-member-card">
+                <img src="/static/images/possessed-photography-g29arbbvPjo-unsplash.jpg" alt="JP" class="member-image">
+                <div class="member-info">
+                    <h3><a href="https://github.com/" target="_blank">JP</a></h3>
+                    <p>JP is an apprentice software developer whose backend skills in building scalable and efficient server-side solutions are unmatched. His skills ensure that our ASCII art generator performs smoothly and reliably.</p>
+                </div>
+            </div>
+            <div class="team-member-card">
+                <img src="/static/images/possessed-photography-JjGXjESMxOY-unsplash.jpg" alt="Cynthia" class="member-image">
+                <div class="member-info">
+                    <h3><a href="https://github.com/" target="_blank">Cynthia</a></h3>
+                    <p>Cynthia is an apprentice software developer whose UI/UX design skills in creating intuitive and visually appealing user experiences are unfathomable. Her design work ensures that our tool is not only functional but also user-friendly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body> -->

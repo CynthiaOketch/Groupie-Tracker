@@ -12,8 +12,6 @@ type Response struct {
 	Data      Data
 }
 
-// const apiURL = "https://groupietrackers.herokuapp.com/api"
-
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		ServeError(w, "Page not found", http.StatusNotFound)
@@ -53,6 +51,7 @@ func Artists(w http.ResponseWriter, r *http.Request) {
 
 	if strings.ToUpper(r.Method) != http.MethodGet {
 		ServeError(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
 	}
 
 	if err := fetchData(apiURL+"/artists", &artists); err != nil {
@@ -76,7 +75,7 @@ func Artists(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 
-	fmt.Println(dataRes.Data)
+	// fmt.Println(dataRes.Data)
 
 	tmpl.Execute(w, dataRes)
 }
@@ -108,10 +107,21 @@ func Concerts(w http.ResponseWriter, r *http.Request) {
 		ServeError(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 
-	// tmpl, err := template.ParseFiles("/templates/concerts.html")
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	ServeError(w, "Internal server error", http.StatusInternalServerError)
-	// 	return
-	// }
+	tmpl, err := template.ParseFiles("templates/concerts.html")
+	if err != nil {
+		ServeError(w, "Internal server error", http.StatusInternalServerError)
+		return
+	}
+
+	dataConcerts := Response{
+		pageTitle: "Concerts",
+		Data: Data{
+			Artists:   artists,
+			Locations: locations,
+			Dates:     dates,
+			Relations: relations,
+		},
+	}
+
+	tmpl.Execute(w, dataConcerts)
 }

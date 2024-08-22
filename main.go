@@ -16,14 +16,14 @@ func main() {
 	}
 
 	port := ":" + os.Args[1]
-	// functions.loadData()
+
 	http.HandleFunc("/", functions.Index)
 	http.HandleFunc("/artists", functions.Artists)
 	http.HandleFunc("/about", functions.About)
 	http.HandleFunc("/concerts", functions.Concerts)
 
-	staticDir := "./static/style/"
-	staticURL := "/static/style/"
+	staticDir := "./static/"
+	staticURL := "/static/"
 	fileServer := http.FileServer(http.Dir(staticDir))
 	http.Handle(staticURL, http.StripPrefix(staticURL, fileServer))
 
