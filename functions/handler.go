@@ -12,6 +12,8 @@ type Response struct {
 	Data      Data
 }
 
+var dataRes Response
+
 // const apiURL = "https://groupietrackers.herokuapp.com/api"
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -31,18 +33,16 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := Data{
-		Artists:   artists,
-		Locations: locations,
-		Dates:     dates,
-		Relations: relations,
+	dataRes = Response{
+		pageTitle: "Artists",
+		Data: Data{
+			Artists:   artists,
+			Locations: locations.Index,
+			Dates:     dates.Index,
+			Relations: relations.Index,
+		},
 	}
-
-	dataResponse := Response{
-		pageTitle: "Groupie Tracker",
-		Data:      data,
-	}
-	tmpl.Execute(w, dataResponse)
+	tmpl.Execute(w, dataRes)
 }
 
 func Artists(w http.ResponseWriter, r *http.Request) {
@@ -55,10 +55,10 @@ func Artists(w http.ResponseWriter, r *http.Request) {
 		ServeError(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
 
-	if err := fetchData(apiURL+"/artists", &artists); err != nil {
-		ServeError(w, fmt.Sprintf("Failed to fetch artists' data: %v", err), http.StatusInternalServerError)
-		return
-	}
+	// if err := fetchData(apiURL+"/artists", &artists); err != nil {
+	// 	ServeError(w, fmt.Sprintf("Failed to fetch artists' data: %v", err), http.StatusInternalServerError)
+	// 	return
+	// }
 
 	tmpl, err := template.ParseFiles("templates/artists.html")
 	if err != nil {
@@ -66,13 +66,13 @@ func Artists(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	dataRes := Response{
+	dataRes = Response{
 		pageTitle: "Artists",
 		Data: Data{
 			Artists:   artists,
-			Locations: locations,
-			Dates:     dates,
-			Relations: relations,
+			Locations: locations.Index,
+			Dates:     dates.Index,
+			Relations: relations.Index,
 		},
 	}
 	tmpl.Execute(w, dataRes)
