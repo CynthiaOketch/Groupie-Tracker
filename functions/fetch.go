@@ -54,9 +54,9 @@ type DateLocs struct {
 
 type Data struct {
 	Artists   []Artist
-	Locations Locations
-	Dates     Dates
-	Relations Relations
+	Locations []Location
+	Dates     []Date
+	Relations []Relation
 }
 
 var (
