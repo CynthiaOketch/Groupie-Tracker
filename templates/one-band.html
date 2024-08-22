@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamonas</title>
+    <link rel="stylesheet" href="../static/style/one-band.css">
+</head>
+<body>
+    <div class="timeline">
+        {{range $index := .Data.Locations}}
+        {{range $i, $location := $index}}
+        {{if  ed $i 0}}
+        <div class="timeline-container left-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>{{location[0]}}</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{else if eq $i 1}}
+        <div class="timeline-container right-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>Mamonas</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{else if eq ($i %2) 0}}
+        <div class="timeline-container left-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>Mamonas</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{else}}
+        <div class="timeline-container right-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>Mamonas</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{end}}
+        {{end}}
+        {{end}}
+    </div>    
+</body>
+</html>
