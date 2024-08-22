@@ -16,11 +16,12 @@ func main() {
 	}
 
 	port := ":" + os.Args[1]
-	// functions.loadData()
+	functions.LoadData()
 	http.HandleFunc("/", functions.Index)
 	http.HandleFunc("/artists", functions.Artists)
 	http.HandleFunc("/about", functions.About)
 	http.HandleFunc("/concerts", functions.Concerts)
+
 
 	staticDir := "./static/style/"
 	staticURL := "/static/style/"
