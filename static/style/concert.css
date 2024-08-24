@@ -139,3 +139,19 @@ header {
 .concert-details p {
     color: #333;
 }
+
+.bands ul {
+    list-style-type: none;
+}
+
+.bands li {
+    margin: 10px 0;
+}
+
+.concert-details {
+    margin: 20px 0;
+}
+
+.concert-details ul {
+    list-style-type: none;
+}

@@ -20,6 +20,7 @@ func main() {
 	http.HandleFunc("/", functions.Index)
 	http.HandleFunc("/artists", functions.Artists)
 	http.HandleFunc("/about", functions.About)
+	http.HandleFunc("/artists/", functions.ArtistDetail)
 	http.HandleFunc("/concerts", functions.Concerts)
 
 	staticDir := "./static/"

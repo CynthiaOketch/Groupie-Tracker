@@ -3,38 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concerts</title>
-    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/style/concerts.css">
+    <title>{{ .pageTitle }}</title>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Concerts for {{ $artists.Name }}</h1>
+            <div class="logo">
+                <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
+            </div>
+            <h1>{{ .pageTitle }}</h1>
             <nav>
                 <a href="/">Home</a>
                 <a href="/artists">Artists</a>
-                <a href="/contact">Contact</a>
+                <a href="/concerts">Concerts</a>
+                <a href="/about">About Us</a>
             </nav>
         </div>
     </header>
     <main>
+        {{range .Data.Artists}}
         <section>
-            <h2>Upcoming Concerts</h2>
-            {{ range $locations := .Data.Locations }}
-            <div class="concerts-list">
-                {{ range $locations }}
-                <div class="concert">
-                    <p>Name: {{$artists.Name}}</p>
-                    <p>Members: {{$artists.Members}}</p>
-                    <p>Date: {{$locations.Dates}}</p>
-                    <p></p>
-                </div>
-                {{ end }}
-            </div>
+            <h2>{{.Name}}</h2>
+            <ul>
+                {{range .ConcertDates}}
+                <li>{{ .Format "January 2, 2006" }} - {{index $.Locations (index $.Dates $index)}}</li>
+                {{end}}
+            </ul>
         </section>
+        {{end}}
     </main>
     <footer>
-        <div class="container">
+        <div class="footer-container">
             <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
         </div>
     </footer>

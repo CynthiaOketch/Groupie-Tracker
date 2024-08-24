@@ -18,7 +18,6 @@
             <h1>Artists</h1>
             <nav>
                 <a href="/">Home</a>
-                <a href="/artists">Artists</a>
                 <a href="/concerts">Concerts</a>
                 <a href="/about">About Us</a>
             </nav>
@@ -29,11 +28,12 @@
         </div>
         
     </header><br>
-    <section class="cards">
+    <section class="view">
         <ul class="cards">
             {{ range $artist := .Data.Artists }}
+            {{ $artist }}
             <li>
-                <a href="#" class="card">
+                <a href="/artists/{{$artist.ID}}" class="card">
                     <img src="{{$artist.Image}}" alt="Band profile picture" class="card-image">
                     <div class="card-overlay">
                         <div class="card-details">
@@ -49,11 +49,12 @@
                 </a>
             </li>
             {{end}}
-        </ul>
+        </ul>        
     </section>
     
+    
     <footer>
-        <div>
+        <div class="footer-container">
             <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
         </div>
     </footer>

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -124,4 +125,83 @@ func Concerts(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.Execute(w, dataConcerts)
+}
+
+func ArtistDetail(w http.ResponseWriter, r *http.Request) {
+	// Extract the artist ID from the URL (e.g., /artists/{id})
+	idStr := strings.TrimPrefix(r.URL.Path, "/artists/")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		ServeError(w, "Invalid artist ID", http.StatusBadRequest)
+		return
+	}
+
+	// Find the artist by ID
+	var artist Artist
+	loadData()
+	fmt.Println("Artists to search: ", id)
+	fmt.Println("All artists: ", artists)
+	for _, a := range artists {
+		if a.ID == id {
+			fmt.Println(artist)
+			artist = a
+			break
+		}
+	}
+	fmt.Println("The ID: ", artist.ID)
+	fmt.Println("The artist: ", artist)
+	if artist.ID == 0 {
+		ServeError(w, "Artist not found", http.StatusNotFound)
+		return
+	}
+
+	var location []Location
+	var artistDates []Date
+	var artistConcertDates []ConcertDate
+	var artistRelations []Relation
+
+	for _, loc := range locations.Index {
+		if loc.ID == id {
+			location = append(location, loc)
+		}
+	}
+
+	for _, date := range dates.Index {
+		if date.ID == id {
+			artistDates = append(artistDates, date)
+		}
+	}
+
+	for _, concert := range concertDates.Index {
+		if concert.ID == id {
+			artistConcertDates = append(artistConcertDates, concert)
+		}
+	}
+
+	for _, relation := range relations.Index {
+		if relation.ID == id {
+			artistRelations = append(artistRelations, relation)
+		}
+	}
+
+	// Load the artist detail template
+	tmpl, err := template.ParseFiles("templates/band.html")
+	if err != nil {
+		ServeError(w, "Internal server error", http.StatusInternalServerError)
+		return
+	}
+
+	// Prepare the response data
+	data := Response{
+		pageTitle: artist.Name,
+		Data: Data{
+			Artists:      []Artist{artist},
+			Locations:    Locations{Index: location},
+			Dates:        Dates{Index: artistDates},
+			ConcertDates: ConcertDates{Index: artistConcertDates},
+			Relations:    Relations{Index: artistRelations},
+		},
+	}
+
+	tmpl.Execute(w, data)
 }

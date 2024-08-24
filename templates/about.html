@@ -22,50 +22,62 @@
                 <a href="/artists">Artists</a>
                 <a href="/concerts">Concerts</a>
             </nav>
-            <!-- <div class="search-container">
-                <input type="text" placeholder="search ...">
-                <button type="submit" id="search-btn">search</button>
-            </div> -->
         </div>
         
     </header>
-    <main>
-
+    <main class="view">
       <div class="container">
-          <div class="card__container">
-            <article class="card__article">
-                <img src="/static/images/kenny-eliason-5afenxnLDjs-unsplash.jpg" alt="image" class="card__img">
-
-                <div class="card__data">
-                  <span class="card__description">Cynthia</span>
-                  <h2 class="card__title">The Great Developer</h2>
-                  <a href="#" class="card__button">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="/static/images/possessed-photography-g29arbbvPjo-unsplash.jpg" alt="image" class="card__img">
-
-                <div class="card__data">
-                  <span class="card__description">John Paul</span>
-                  <h2 class="card__title">Backend Developer</h2>
-                  <a href="#" class="card__button">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="/static/images/possessed-photography-JjGXjESMxOY-unsplash.jpg" alt="image" class="card__img">
-
-                <div class="card__data">
-                  <span class="card__description">Joel</span>
-                  <h2 class="card__title">Frontend Nation</h2>
-                  <a href="#" class="card__button">Read More</a>
-                </div>
-            </article>
-          </div>
+        <div class="card__container">
+          <article id="cynthia" class="card__article">
+            <img src="/static/images/kenny-eliason-5afenxnLDjs-unsplash.jpg" alt="image" class="card__img">
+            <div class="card__data">
+              <span class="card__description">Cynthia</span>
+              <h2 class="card__title">The Great Developer</h2>
+              <a href="#cynthia-details" class="card__button">Read More</a>
+            </div>
+          </article>
+    
+          <article id="john-paul" class="card__article">
+            <img src="/static/images/3" alt="image" class="card__img">
+            <div class="card__data">
+              <span class="card__description">John Paul</span>
+              <h2 class="card__title">Backend Developer</h2>
+              <a href="#john-paul-details" class="card__button">Read More</a>
+            </div>
+          </article>
+    
+          <article id="joel" class="card__article">
+            <img src="/static/images/" alt="image" class="card__img">
+            <div class="card__data">
+              <span class="card__description">Joel</span>
+              <h2 class="card__title">Frontend Nation</h2>
+              <a href="#joel-details" class="card__button">Read More</a>
+            </div>
+          </article>
+        </div>
       </div>
-        
     </main>
+    
+    <section class="persons">
+      <div id="cynthia-details" class="about-card">
+        <!-- Cynthia's detailed info here -->
+        <h3>Cynthia</h3>
+        <p>Cynthia is an apprentice software developer with a knack for creating engaging web applications...</p>
+      </div>
+    
+      <div id="john-paul-details" class="about-card">
+        <!-- John Paul's detailed info here -->
+        <h3>John Paul</h3>
+        <p>John Paul is an apprentice software developer whose backend skills in building scalable and efficient server-side solutions...</p>
+      </div>
+    
+      <div id="joel-details" class="about-card">
+        <!-- Joel's detailed info here -->
+        <h3>Joel</h3>
+        <p>Joel is an apprentice software developer with expertise in frontend development and a passion for clean design...</p>
+      </div>
+    </section>
+    
     <footer>
       <div>
           <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
@@ -74,6 +86,26 @@
 </body>
 
 </html>
+<script>
+  document.querySelectorAll('.card__button').forEach(button => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      document.querySelectorAll('.about-card').forEach(card => {
+        card.style.display = 'none';
+      });
+
+      if (targetElement) {
+        targetElement.style.display = 'block';
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+
 
 <!-- <body>
   <header>

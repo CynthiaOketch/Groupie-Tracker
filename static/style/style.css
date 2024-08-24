@@ -89,16 +89,16 @@ body {
   color: var(--clr-text-200);
   text-decoration: none;
   background-color: var(--clr-primary-600);
-  /* text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -moz-osx-font-smoothing: grayscale;
   position: relative;
   z-index: 1000;
+  margin-bottom: 60px;
 }
 
 header, main, footer {
     display: block;
-    margin-bottom: 2rem;
 }
 
 header {
@@ -248,6 +248,8 @@ nav a:hover {
   font-size: 1.5rem;
 }
 
+
+
 .about {
   width: 80%;
   margin: 0 auto;
@@ -261,13 +263,120 @@ h2 {
   color: #ecf0f1;
 }
 
+@keyframes appear{
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+    /* clip-path: inset(100% 100% 0 0) */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+    /* clip-path: inset(0 0 0 0) */
+  }
+}
+
+.cards {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cards li {
+  margin: 20px;
+}
+
+.card {
+  display: block;
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  animation: appear 1s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+/* .card__container {
+  animation: appear 5s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+  display: grid;
+  row-gap: 3.5rem;
+} */
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+}
+
+.card-details {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.card-creation-date {
+  color: #777;
+  font-size: 14px;
+}
+
+.card-description {
+  padding: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+
+.buttons .btn {
+  background-color: #007BFF;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons .btn:hover {
+  background-color: #0056b3;
+}
+
+.buttons .btn a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.buttons .btn:active {
+  background-color: #004494;
+}
+
+
 .team-members {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
-
 
 .team-member-card {
   background: #34495e;
@@ -314,7 +423,6 @@ h2 {
   text-decoration: underline;
 }
 
-
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -325,99 +433,111 @@ h2 {
 }
 
 .card {
-    position: relative;
-    display: block;
-    height: 100%;
-    border-radius: 40px;
-    overflow: hidden;
-    text-decoration: none;
+  animation: appear 5s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: calc(40*1px);
+  overflow: hidden;
+  text-decoration: none;
 }
 
 .card-image {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    border-radius: 40px;
-    background-color: #3f7ca8;
-    transform: translateY(100%);
-    transition: .2s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: calc(40*1px);
+  background-color: #3f7ca8;
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
 }
 
 .card:hover .card-overlay {
-    transform: translateY(0%);
-}
-
-.card-arc {
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    bottom: 100%;
-    right: 0;
-    z-index: 1;
+  transform: translateY(0);
 }
 
 .card-details {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding: 2em;
-    border-radius: 40px 0 0 0;
-    background-color: #3f7ca8;
-    transform: translateY(-100%);
-    transition: .2s ease-in-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(40*1px) 0 0 0;
+  background-color: #3f7ca8;
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card-arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1;
+}
+
+.card-arc path {
+  fill: #3f7ca8;
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.card:hover .card-details {
+  transform: translateY(0);
 }
 
 .card-thumbnail {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .card-title {
-    font-size: 1.2em;
-    margin: 0 0 .3em;
-    color: #ededed;
+  font-size: 1.2em;
+  margin: 0 0 .3em;
+  color: #ededed;
 }
 
 .card-creation-date {
-    font-size: 1em;
-    color: #ededed;
+  font-size: 1em;
+  color: #ededed;
 }
 
 .card-description {
-    padding: 0 2em 2em;
-    margin: 0;
-    color: #ededed;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #ededed;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 footer {
-  position: fixed; /* Ensure footer stays at the bottom */
+  position: fixed;
   bottom: 0;
   background-color: var(--primary-color);
   color: var(--neutral-color);
   text-align: center;
-  margin-bottom: 0.1rem; 
-  display: flex; /* Use flexbox for alignment */
+  display: flex; 
   align-items: center;
   justify-content: center;
-  width: 100%; /* Ensure the footer spans the full width */
-  border-radius: 20px; /* Changed from percentage to px */
+  width: 100%;
   padding: 10px 0;
-  padding-bottom: 20px;
+  border-radius: 20px 20px 0 0; /* Rounded top corners */
+  z-index: 1000; /* Ensure footer is on top */
 }
+
 .footer-container {
   display: grid;
   place-items: center;

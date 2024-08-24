@@ -26,22 +26,31 @@ type Locations struct {
 	Index []Location
 }
 type Location struct {
-	ID    int    `json:"id"`
-	Name  string `json:"locations"`
-	Dates string `json:"dates"`
+	ID    int      `json:"id"`
+	Name  []string `json:"locations"`
+	Dates string   `json:"dates"`
 }
 
 type Dates struct {
-	Index []Dates
+	Index []Date
 }
 
 type Date struct {
-	ID   int    `json:"id"`
-	Date string `json:"dates"`
+	ID   int      `json:"id"`
+	Date []string `json:"dates"`
+}
+
+type ConcertDate struct {
+	ID   int       `json:"id"`
+	Date time.Time `json:"date"`
+}
+
+type ConcertDates struct {
+	Index []ConcertDate
 }
 
 type Relations struct {
-	Index []Relations
+	Index []Relation
 }
 
 type Relation struct {
@@ -50,17 +59,19 @@ type Relation struct {
 }
 
 type Data struct {
-	Artists   []Artist
-	Locations Locations
-	Dates     Dates
-	Relations Relations
+	Artists      []Artist
+	Locations    Locations
+	Dates        Dates
+	ConcertDates ConcertDates
+	Relations    Relations
 }
 
 var (
-	artists   []Artist
-	locations Locations
-	dates     Dates
-	relations Relations
+	artists      []Artist
+	locations    Locations
+	dates        Dates
+	concertDates ConcertDates
+	relations    Relations
 )
 
 var apiURL = "https://groupietrackers.herokuapp.com/api/"
