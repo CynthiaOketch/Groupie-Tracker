@@ -27,7 +27,7 @@ type Locations struct {
 }
 type Location struct {
 	ID    int      `json:"id"`
-	Name  []string `json:"locations"`
+	Venues  []string `json:"locations"`
 	Dates string   `json:"dates"`
 }
 
@@ -40,37 +40,49 @@ type Date struct {
 	Date []string `json:"dates"`
 }
 
-type ConcertDate struct {
-	ID   int       `json:"id"`
-	Date time.Time `json:"date"`
-}
+// type ConcertDate struct {
+// 	ID   int       `json:"id"`
+// 	Date time.Time `json:"date"`
+// }
 
-type ConcertDates struct {
-	Index []ConcertDate
-}
+// type ConcertDates struct {
+// 	Index []ConcertDate
+// }
 
 type Relations struct {
-	Index []Relation
+	Index []Relation `json:"index"`
 }
 
 type Relation struct {
 	ID       int      `json:"id"`
-	DateLocs []string `json:"datesLocations"`
+	DateLocs map[string][]string `json:"datesLocations"`
 }
+
+// type DateLoc struct {
+// 	Location string
+// 	Dates []time.Time
+// }
 
 type Data struct {
 	Artists      []Artist
 	Locations    Locations
 	Dates        Dates
-	ConcertDates ConcertDates
+	// ConcertDates ConcertDates
 	Relations    Relations
+}
+
+type BandDetails struct {
+	Artist Artist
+	Location Location
+	Dates Date
+	Relation Relation
 }
 
 var (
 	artists      []Artist
 	locations    Locations
 	dates        Dates
-	concertDates ConcertDates
+	// concertDates ConcertDates
 	relations    Relations
 )
 
@@ -92,6 +104,11 @@ func fetchData(url string, target interface{}) error {
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
+	}
+
+	if url == "https://groupietrackers.herokuapp.com/api/relation" {
+		fmt.Println("here: ")
+		fmt.Println(string(body))
 	}
 
 	return json.Unmarshal(body, target)
