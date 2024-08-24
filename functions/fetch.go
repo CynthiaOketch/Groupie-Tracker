@@ -105,12 +105,6 @@ func fetchData(url string, target interface{}) error {
 	if err != nil {
 		return err
 	}
-
-	if url == "https://groupietrackers.herokuapp.com/api/relation" {
-		fmt.Println("here: ")
-		fmt.Println(string(body))
-	}
-
 	return json.Unmarshal(body, target)
 }
 
