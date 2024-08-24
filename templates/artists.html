@@ -31,7 +31,6 @@
     <section class="view">
         <ul class="cards">
             {{ range $artist := .Data.Artists }}
-            {{ $artist }}
             <li>
                 <a href="/artists/{{$artist.ID}}" class="card">
                     <img src="{{$artist.Image}}" alt="Band profile picture" class="card-image">
