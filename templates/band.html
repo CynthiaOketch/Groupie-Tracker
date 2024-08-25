@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <title>{{.Band.Artist.Name}}</title>
+    <link rel="stylesheet" href="../static/style/one-band.css">
+</head>
+<body>
+    <h3>About {{.Band.Artist.Name}}</h3>
+    <!-- Members -->
+    <div class="members">
+        
+        <div class="member-container">
+            <h3>{{.Band.Artist.Name}} Band Members</h3>
+            {{range $index, $mem := .Band.Artist.Members}}
+            <div class="list">
+                <div class="rank"><span>{{$index}}</span></div>
+                <div class="one-member">
+                    <h4>{{$mem}}</h4>
+                    <p>Joined the band in {{$.Band.Artist.CreationDate}}</p>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        
+    </div>
+    <p>Venues</p>
+    {{range $loc := .Band.Location.Venues}}
+       <p>{{$loc}}</p>
+    {{end}}
+
+    
+    
+    <footer>
+        <div>
+            <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -6,7 +6,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"time"
 )
 
 // Define structs for API response
@@ -23,9 +22,8 @@ type Artist struct {
 }
 
 type Locations struct {
-	Index []Location
+	Index []Location `json:"index"`
 }
-
 type Location struct {
 	ID       int      `json:"id"`
 	Location []string `json:"locations"`
@@ -40,23 +38,28 @@ type Date struct {
 	ID   int      `json:"id"`
 	Date []string `json:"dates"`
 }
+
 type Relations struct {
-	Index []Relation
-}
-type Relation struct {
-	ID       int        `json:"id"`
-	DateLocs DateLocs
+	Index []Relation `json:"index"`
 }
 
-type DateLocs struct {
-	DateLoc []string `json:"datesLocations"`
+type Relation struct {
+	ID       int      `json:"id"`
+	DateLocs map[string][]string `json:"datesLocations"`
 }
 
 type Data struct {
-	Artists   []Artist
-	Locations []Location
-	Dates     []Date
-	Relations []Relation
+	Artists      []Artist
+	Locations    Locations
+	Dates        Dates
+	Relations    Relations
+}
+
+type BandDetails struct {
+	Artist Artist
+	Location Location
+	Dates Date
+	Relation Relation
 }
 
 var (
@@ -69,10 +72,7 @@ var (
 var apiURL = "https://groupietrackers.herokuapp.com/api/"
 
 func fetchData(url string, target interface{}) error {
-	client := &http.Client{
-		Timeout: 10 * time.Second, // timeout the request if response is delayed
-	}
-	resp, err := client.Get(url)
+	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Printf("error fetching JSON from %s", url)
 		return err
@@ -90,9 +90,7 @@ func fetchData(url string, target interface{}) error {
 		fmt.Println("Error: Reading from repsonse body")
 		return err
 	}
-	fmt.Println(len(body))
-
-	return json.Unmarshal(body, &target)
+	return json.Unmarshal(body, target)
 }
 
 func LoadData() {
@@ -109,5 +107,4 @@ func LoadData() {
 	if err = fetchData("https://groupietrackers.herokuapp.com/api/relation", &relations); err != nil {
 		log.Fatalf("Error fetching relations: %v", err)
 	}
-	// fmt.Println(len(artists), len(locations), len(dates), len(relations))
 }

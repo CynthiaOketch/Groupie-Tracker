@@ -20,11 +20,12 @@ func main() {
 	http.HandleFunc("/", functions.Index)
 	http.HandleFunc("/artists", functions.Artists)
 	http.HandleFunc("/about", functions.About)
+	http.HandleFunc("/artists/", functions.ArtistDetail)
 	http.HandleFunc("/concerts", functions.Concerts)
 
 
-	staticDir := "./static/style/"
-	staticURL := "/static/style/"
+	staticDir := "./static/"
+	staticURL := "/static/"
 	fileServer := http.FileServer(http.Dir(staticDir))
 	http.Handle(staticURL, http.StripPrefix(staticURL, fileServer))
 
