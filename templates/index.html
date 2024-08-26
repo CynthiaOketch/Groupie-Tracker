@@ -6,6 +6,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="/script/script.js" defer></script>
     <link rel="stylesheet" href="/static/style/style.css">
     <title>Groupie Tracker</title>
 </head>
@@ -21,34 +22,47 @@
           <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
           <a href="/about" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="size: small;"></i>About Us</a>
       </nav>
-        <div class="search-container">
-          <input type="text" placeholder="search ...">
-          <button type="submit" id="search-btn">search</button>
-        </div>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="search ...">
+        <button type="button" id="search-btn">search</button>
+        <div id="suggestions" class="suggestions"></div>
+    </div>
     </div>
   </header>
 
     <main>
-        <section class="hero">
-          <h1 class="fade-in-up">Explore music ...</h1>
-          <p class="fade-in-up"></p>
-        </section>
-    
-        <section id="features" class="features" action="/artists">
-          <div class="feature fade-in-up">
+      <section class="hero">
+        <h1 class="fade-in-up">Explore music ...</h1>
+        <p class="fade-in-up"></p>
+    </section>
+    <hr>
+
+    <section id="features" class="features">
+        <div class="feature fade-in-up">
             <i class="fas fa-users"></i>
+            <h3>Artists</h3>
+            <a href="/artists" action="/artists" method="get"></a>
+            <p>Connect directly with your beloved artists on their tours</p>
+            <div id="artists-list" class="cards-container"></div>
+        </div>
+
+        <div class="feature fade-in-up">
+            <i class="fas fa-microphone"></i>
             <h3>Concerts</h3>
             <a href="/concerts" action="/concerts" method="get"></a>
             <p>Connect directly with your beloved artists on their tours</p>
-          </div>
-          <div class="feature fade-in-up">
+            <div id="concerts-list" class="cards-container"></div>
+        </div>
+
+        <div class="feature fade-in-up">
             <i class="fas fa-globe-africa"></i>
             <h3>Locations</h3>
             <a href="/locations" action="/locations" method="get"></a>
             <p>Sign up for a surreal experience</p>
-          </div>
-        </section>
-    
+            <div id="locations-list" class="cards-container"></div>
+        </div>
+    </section>
+        <hr>
         
       </main>
 
@@ -57,5 +71,6 @@
             <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
         </div>
     </footer>
+    
 </body>
 </html>

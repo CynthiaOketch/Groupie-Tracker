@@ -14,6 +14,7 @@ type Response struct {
 }
 
 var dataRes Response
+
 type BandResponse struct {
 	pageTitle string
 	Band      BandDetails
@@ -132,7 +133,7 @@ func ArtistDetail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	index := id
+	index := id - 1
 	if id == 0 {
 		ServeError(w, "Artist not found", http.StatusNotFound)
 		return
