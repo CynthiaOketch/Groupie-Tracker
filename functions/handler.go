@@ -132,7 +132,7 @@ func ArtistDetail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	index := id
+	index := id -1
 	if id == 0 {
 		ServeError(w, "Artist not found", http.StatusNotFound)
 		return
@@ -140,6 +140,13 @@ func ArtistDetail(w http.ResponseWriter, r *http.Request) {
 
 	// Load the artist detail template
 	tmpl, err := template.ParseFiles("templates/band.html")
+	if err != nil {
+		ServeError(w, "Internal server error", http.StatusInternalServerError)
+		return
+	}
+	fmt.Println("before:",&relations.Index[index].Places)
+	err = transformRelation(&relations.Index[index])
+	fmt.Println("after", &relations.Index[index].Places)
 	if err != nil {
 		ServeError(w, "Internal server error", http.StatusInternalServerError)
 		return
@@ -152,7 +159,7 @@ func ArtistDetail(w http.ResponseWriter, r *http.Request) {
 			Artist:   artists[index],
 			Location: locations.Index[index],
 			Dates:    dates.Index[index],
-			Relation: relations.Index[index],
+			Places: relations.Index[index].Places,
 		},
 	}
 
