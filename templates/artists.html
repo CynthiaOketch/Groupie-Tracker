@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../static/style/style.css">
+    <script src="/script/script.js" defer></script>
+    <link rel="stylesheet" href="../static/style/artist.css">
     <title>Artists</title>
 </head>
 <body>
@@ -17,13 +18,14 @@
             </div>
             <h1>Artists</h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/concerts">Concerts</a>
-                <a href="/about">About Us</a>
+                <a href="/" action="/" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-home"></i>Home</a>
+                <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
+                <a href="/about" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="size: small;"></i>About Us</a>
             </nav>
             <div class="search-container">
-                <input type="text" placeholder="search ...">
-                <button type="submit" id="search-btn">search</button>
+                <input type="text" id="search-input" placeholder="search ...">
+                <button type="button" id="search-btn">search</button>
+                <div id="suggestions" class="suggestions"></div>
             </div>
         </div>
         

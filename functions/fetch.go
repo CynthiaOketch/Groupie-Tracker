@@ -44,20 +44,20 @@ type Relations struct {
 }
 
 type Relation struct {
-	ID       int      `json:"id"`
+	ID       int                 `json:"id"`
 	DateLocs map[string][]string `json:"datesLocations"`
 	Places []PlaceInfo
 }
 
 type Data struct {
-	Artists      []Artist
-	Locations    Locations
-	Dates        Dates
-	Relations    Relations
+	Artists   []Artist
+	Locations Locations
+	Dates     Dates
+	Relations Relations
 }
 
 type BandDetails struct {
-	Artist Artist
+	Artist   Artist
 	Location Location
 	Dates Date
 	Places []PlaceInfo
@@ -78,13 +78,12 @@ func fetchData(url string, target interface{}) error {
 		fmt.Printf("error fetching JSON from %s", url)
 		return err
 	}
-	
+
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("failed to fetch data from %s: %s", url, resp.Status)
 	}
-	
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {

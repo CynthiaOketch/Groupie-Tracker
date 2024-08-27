@@ -78,7 +78,7 @@ header, main, footer {
   
 body {
     font-family: var(--body-font);
-    background: -moz-repeating-linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: -moz-repeating-linear-gradient(175deg, var(--primary-color), var(--secondary-color));
     color: 1em solid #e1e4e8;
     margin: 0;
     padding: 0;
@@ -94,7 +94,8 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     background-color: -moz-repeating-radial-gradient(100deg, var(--accent-color), var(--secondary-color));
-    max-width: 600px;
+    max-width: 1200px;
+    height: 50%;
     width: 90%;
 }
 

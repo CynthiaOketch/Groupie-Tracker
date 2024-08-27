@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" /> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <title>{{.Band.Artist.Name}}</title>
     <link rel="stylesheet" href="../static/style/one-band.css">
 </head>
@@ -34,15 +32,15 @@
     <!-- Locations -->
     <h3 style="color: white;">Relation</h3>
     <div class="timeline">
-        {{range $place := .Band.Relation.Places}}    
-                <div class="timeline-container left-box">
-                    <img src="{{$.Band.Artist.Image}}" alt="Band logo">
-                    <div class="text-box">
-                        <h2 style="color: black;">City: {{$place.State}} Country: {{$place.Country}}</h2>
-                        <small>This band made their first album in {{$.Band.Artist.FirstAlbum}}</small>
-                        <h3>Dates:</h3>
-                        <p>{{$place.Date}}</p>
-                    </div>
+        {{range $loc, $dates := .Band.Relation.DateLocs}}        
+            <div class="timeline-container left-box">
+                <img src="{{$.Band.Artist.Image}}" alt="Band logo">
+                <div class="text-box">
+                    <h2 style="color: black;">Venue: {{$loc}}</h2>
+                    <h3>Dates:</h3>
+                    {{range $dates}}
+                        <p>{{.}}</p>
+                    {{end}}
                 </div>
         {{end}}
     </div>
