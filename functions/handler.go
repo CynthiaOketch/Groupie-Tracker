@@ -145,13 +145,13 @@ func ArtistDetail(w http.ResponseWriter, r *http.Request) {
 		ServeError(w, "Internal server error", http.StatusInternalServerError)
 		return
 	}
-	fmt.Println("before:",&relations.Index[index].Places)
-	err = transformRelation(&relations.Index[index])
-	fmt.Println("after", &relations.Index[index].Places)
-	if err != nil {
-		ServeError(w, "Internal server error", http.StatusInternalServerError)
-		return
-	}
+	// fmt.Println("before:",&relations.Index[index].Places)
+	// err = transformRelation(&relations.Index[index])
+	// fmt.Println("after", &relations.Index[index].Places)
+	// if err != nil {
+	// 	ServeError(w, "Internal server error", http.StatusInternalServerError)
+	// 	return
+	// }
 
 	// Prepare the response data
 	data := BandResponse{
@@ -160,7 +160,7 @@ func ArtistDetail(w http.ResponseWriter, r *http.Request) {
 			Artist:   artists[index],
 			Location: locations.Index[index],
 			Dates:    dates.Index[index],
-			Places: relations.Index[index].Places,
+			Relation: relations.Index[index],
 		},
 	}
 

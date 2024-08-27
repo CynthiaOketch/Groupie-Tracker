@@ -46,7 +46,6 @@ type Relations struct {
 type Relation struct {
 	ID       int                 `json:"id"`
 	DateLocs map[string][]string `json:"datesLocations"`
-	Places []PlaceInfo
 }
 
 type Data struct {
@@ -60,7 +59,7 @@ type BandDetails struct {
 	Artist   Artist
 	Location Location
 	Dates Date
-	Places []PlaceInfo
+	Relation Relation
 }
 
 var (
