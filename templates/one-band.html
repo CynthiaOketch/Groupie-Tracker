@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamonas</title>
+    <link rel="stylesheet" href="../static/style/one-band.css">
+</head>
+<body>
+    <!-- Members -->
+    <div class="members">
+        <div class="member-container">
+            <h3>Mamonas Band Members</h3>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="one-member">
+                    <h4>Rob Mcenna</h4>
+                    <p>Joined the band in 1990</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Locations -->
+    <div class="timeline">
+        {{range $index := .Data.Locations}}
+        {{range $i, $location := $index}}
+        {{if  ed $i 0}}
+        <div class="timeline-container left-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>{{location[0]}}</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{else if eq $i 1}}
+        <div class="timeline-container right-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>Mamonas</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{else if eq ($i %2) 0}}
+        <div class="timeline-container left-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>Mamonas</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{else}}
+        <div class="timeline-container right-box">
+            <img src="../static/images/mamo.jpeg" alt="Band logo">
+            <div class="text-box">
+                <h2>Mamonas</h2>
+                <small>1997</small>
+                <p>This band made their first album in 2024.</p>
+            </div>
+        </div>
+        {{end}}
+        {{end}}
+        {{end}}
+    </div>    
+</body>
+</html>

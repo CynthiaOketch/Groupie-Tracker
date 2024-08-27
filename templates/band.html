@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Band.Artist.Name}}</title>
+    <link rel="stylesheet" href="../static/style/one-band.css">
+</head>
+<body>
+    <h3 style="color: white;">About {{.Band.Artist.Name}}</h3>
+    <!-- Members -->
+    <div class="members">
+        
+        <div class="member-container">
+            <h3>{{.Band.Artist.Name}} Band Members</h3>
+            {{range $index, $mem := .Band.Artist.Members}}
+            <div class="list">
+                <div class="rank"><span>{{$index}}</span></div>
+                <div class="one-member">
+                    <h4>{{$mem}}</h4>
+                    <p>Joined the band in {{$.Band.Artist.CreationDate}}</p>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        
+    </div>
+    <h3 style="color: white;">Venues</h3>
+    {{range $loc := .Band.Location.Location}}
+       <p style="color: white;">{{$loc}}</p>
+    {{end}}
+    <!-- Locations -->
+    <h3 style="color: white;">Relation</h3>
+    <div class="timeline">
+        {{range $loc, $dates := .Band.Relation.DateLocs}}        
+            <div class="timeline-container left-box">
+                <img src="{{$.Band.Artist.Image}}" alt="Band logo">
+                <div class="text-box">
+                    <h2 style="color: black;">Venue: {{$loc}}</h2>
+                    <h3>Dates:</h3>
+                    {{range $dates}}
+                        <p>{{.}}</p>
+                    {{end}}
+                </div>
+        {{end}}
+    </div>
+    <footer>
+        <div>
+            <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
