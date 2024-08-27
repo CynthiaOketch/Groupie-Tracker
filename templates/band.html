@@ -34,18 +34,16 @@
     <!-- Locations -->
     <h3 style="color: white;">Relation</h3>
     <div class="timeline">
-        {{range $loc, $dates := .Band.Relation.DateLocs}}        
-            <div class="timeline-container left-box">
-                <img src="{{$.Band.Artist.Image}}" alt="Band logo">
-                <div class="text-box">
-                    <h2 style="color: black;">Venue: {{$loc}}</h2>
-                    <small>This band made their first album in {{$.Band.Artist.FirstAlbum}}</small>
-                    <h3>Dates:</h3>
-                    {{range $dates}}
-                        <p>{{.}}</p>
-                    {{end}}
+        {{range $place := .Band.Relation.Places}}    
+                <div class="timeline-container left-box">
+                    <img src="{{$.Band.Artist.Image}}" alt="Band logo">
+                    <div class="text-box">
+                        <h2 style="color: black;">City: {{$place.State}} Country: {{$place.Country}}</h2>
+                        <small>This band made their first album in {{$.Band.Artist.FirstAlbum}}</small>
+                        <h3>Dates:</h3>
+                        <p>{{$place.Date}}</p>
+                    </div>
                 </div>
-            </div>
         {{end}}
     </div>
     <footer>
