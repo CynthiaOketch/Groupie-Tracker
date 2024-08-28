@@ -1,25 +1,8 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
-/* @font-face {
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 100;
-    src: url(https://fonts.gstatic.com/s/lato/v24/S6u-w4BMUTPHjxsIPx-mPCLQ7A.woff2) format('woff2');
-    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-} */
-
 :root {
 
-  /* background: #FEFAE0;
-    hover: #606C38;
-    navbar: #283618;
-    buttons; #DDA15E;
-    #BC6C25
-    image {
-    display: block;
-    max-width: 100%;
-  */
-  --font-family: -apple-system, pretendard;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --fs-300: Clamp(0.94rem, calc(0.92rem + 0.08vw));
   --fs-400: Clamp(0.94rem, calc(0.92rem + 0.07vw));
   --fs-500: Clamp(0.94rem, calc(0.92rem + 0.06vw));
@@ -29,35 +12,28 @@
   --fs-900: Clamp(0.94rem, calc(0.92rem + 0.02vw));
 
   --primary-color:hsl(353, 69%, 43%);
-  /* --primary-color:#2c3e50; */
-  --clr-primary-700:hsl(200, 89%, 15%);
-  --clr-primary-600:hsl(200, 89%, 20%);
-  --clr-primary-500:hsl(200, 89%, 35%);
-  --clr-primary-400:hsl(200, 89%, 55%);
-  --clr-primary-300:hsl(200, 89%, 67%);
-  --clr-primary-200:hsl(200, 89%, 80%);
+  --clr-primary-700:hsl(353, 69%, 15%);
+  --clr-primary-600:hsl(353, 69%, 20%);
+  --clr-primary-500:hsl(353, 69%, 35%);
+  --clr-primary-400:hsl(353, 69%, 43%);
+  --clr-primary-300:hsl(353, 69%, 57%);
+  --clr-primary-200:hsl(353, 69%, 75%);
 
   --secondary-color:hsl(228, 57%, 0%);
-  /* --secondary-color:#955656; */
-  /* --secondary-color:#384849; */
-  --clr-secondary-700:hsl(144, 62%, 5%);
-  --clr-secondary-600:hsl(114, 65%, 15%);
-  --clr-secondary-500:hsl(114, 55%, 25%);
-  --clr-secondary-400:hsl(114, 45%, 35%);
-  --clr-secondary-300:hsl(114, 35%, 45%);
-  --clr-secondary-200:hsl(114, 25%, 55%);
+  --clr-secondary-700:hsl(228, 57%, 5%);
+  --clr-secondary-600:hsl(228, 57%, 15%);
+  --clr-secondary-500:hsl(228, 57%, 25%);
+  --clr-secondary-400:hsl(228, 57%, 35%);
+  --clr-secondary-300:hsl(228, 57%, 45%);
+  --clr-secondary-200:hsl(228, 57%, 55%);
 
-  --accent-color:hsl(32, 98%, 50%);
-  /* --accent-color: #f39c12; */
-  --clr-accent-700:hsl(49, 75%, 54%);
-  --clr-accent-600:hsl(33, 75%, 47%);
-  --clr-accent-500:hsl(33, 75%, 40%);
-  --clr-accent-400:hsl(33, 75%, 35%);
-  --clr-accent-300:hsl(33, 75%, 30%);
-  --clr-accent-200:hsl(33, 75%, 25%);
+  --clr-accent-700:hsl(32, 98%, 15%);
+  --clr-accent-600:hsl(32, 98%, 25%);
+  --clr-accent-500:hsl(32, 98%, 35%);
+  --clr-accent-400:hsl(32, 98%, 45%);
+  --clr-accent-300:hsl(32, 98%, 55%);
+  --clr-accent-200:hsl(32, 98%, 65%);
 
-  --accent-color:hsl(28, 81%, 90%);
-  /* --neutral-color: #ecf0f1; */
   --clr-neutral-700:hsl(182, 75%, 35%);
   --clr-neutral-600:hsl(182, 75%, 45%);
   --clr-neutral-500:hsl(182, 75%, 55%);
@@ -86,16 +62,13 @@ html {
 }
 
 body {
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: var(--font-family);
   margin: 0;
   padding: 0;
   text-size-adjust: var(--fs-500);
   color: var(--clr-text-200);
   text-decoration: none;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, var(--clr-primary-700), var(--clr-secondary-500));
   position: relative;
   z-index: 1000;
   margin-bottom: 60px;
@@ -106,7 +79,7 @@ header, main, footer {
 }
 
 header {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--clr-neutral-400), var(--clr-accent-500));
+    background: linear-gradient(135deg, var(--clr-primary-700), var(--clr-secondary-700), var(--clr-secondary-500));
     color: #cfa77a;
     padding: 1rem 0;
     position: fixed;
@@ -149,7 +122,7 @@ header {
 }
 
 nav {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--clr-secondary-500));
     display: flex;
     align-items: center;
     border-radius: 8px;
@@ -181,7 +154,7 @@ nav a:hover {
 
 .search-container button {
   background-color: #cfa77a;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-family);
   padding: 5px 15px;
   border: none;
   border-radius: 5px;
@@ -203,7 +176,7 @@ nav a:hover {
 }
 
 .hero {
-    background: -moz-repeating-linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: -moz-repeating-linear-gradient(135deg, var(--clr-primary-500), var(--clr-secondary-500));
     color: #d9d9d9;
     text-align: center;
     padding: 8rem 2rem 6rem;
@@ -277,31 +250,9 @@ h2 {
   }
 }
 
-.cards {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .cards li {
   margin: 20px;
 }
-
-.card {
-  display: block;
-  background: #f5f5f5;
-  border-radius: 12px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.7s ease;
-  animation: appear 1s linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
-}
-
 
 .card:hover {
   transform: scale(1.05);
@@ -371,15 +322,20 @@ h2 {
   margin: 4rem 5vw;
   padding: 0;
   list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
+  transition: transform 0.7s ease;
   animation: appear 1s linear;
   animation-timeline: view();
   animation-range: entry 0% cover 40%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   display: block;
   height: 100%;
+  text-align: center;
   border-radius: calc(40*1px);
   overflow: hidden;
   text-decoration: none;
@@ -480,16 +436,16 @@ h2 {
 footer {
   position: fixed;
   bottom: 0;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--clr-neutral-400), var(--clr-accent-500));
-  color: var(--neutral-color);
+  background: linear-gradient(135deg, var(--clr-primary-500), var(--clr-secondary-700));
+  color: var(--clr-text-600);
   text-align: center;
   display: flex; 
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 10px 0;
-  border-radius: 20px 20px 0 0; /* Rounded top corners */
-  z-index: 1000; /* Ensure footer is on top */
+  border-radius: 20px 20px 0 0;
+  z-index: 1000;
 }
 
 .footer-container {

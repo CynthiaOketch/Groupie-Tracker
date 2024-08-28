@@ -23,7 +23,6 @@ func main() {
 	http.HandleFunc("/artists/", functions.ArtistDetail)
 	http.HandleFunc("/concerts", functions.Concerts)
 
-
 	staticDir := "./static/"
 	staticURL := "/static/"
 	fileServer := http.FileServer(http.Dir(staticDir))

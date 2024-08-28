@@ -11,7 +11,6 @@
     --fs-800: Clamp(0.94rem, calc(0.92rem + 0.03vw));
     --fs-900: Clamp(0.94rem, calc(0.92rem + 0.02vw));
   
-    /* --primary-color:#2c3e50; */
     --primary-color:hsl(353, 69%, 43%);
     --clr-primary-700:hsl(200, 89%, 15%);
     --clr-primary-600:hsl(200, 89%, 20%);
@@ -19,9 +18,7 @@
     --clr-primary-400:hsl(200, 89%, 55%);
     --clr-primary-300:hsl(200, 89%, 67%);
     --clr-primary-200:hsl(200, 89%, 80%);
-  
-    /* --secondary-color:#955656; */
-    /* --secondary-color:#384849; */
+
     --secondary-color:hsl(228, 57%, 0%);
     --clr-secondary-700:hsl(144, 62%, 5%);
     --clr-secondary-600:hsl(114, 65%, 15%);
@@ -30,7 +27,6 @@
     --clr-secondary-300:hsl(114, 35%, 45%);
     --clr-secondary-200:hsl(114, 25%, 55%);
   
-    /* --accent-color: #f39c12; */
     --accent-color:hsl(32, 98%, 50%);
     --clr-accent-700:hsl(49, 75%, 54%);
     --clr-accent-600:hsl(33, 75%, 47%);
@@ -39,8 +35,7 @@
     --clr-accent-300:hsl(33, 75%, 30%);
     --clr-accent-200:hsl(33, 75%, 25%);
   
-    /* --neutral-color: #ecf0f1; */
-    --accent-color:hsl(28, 81%, 90%);
+    --neutral-color:hsl(28, 81%, 90%);
     --clr-neutral-700:hsl(182, 75%, 35%);
     --clr-neutral-600:hsl(182, 75%, 45%);
     --clr-neutral-500:hsl(182, 75%, 55%);
@@ -85,7 +80,6 @@ header, main, footer {
 body {
     font-family: var(--body-font);
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-    /* background: radial-gradient(115deg, var(--primary-color), var(--secondary-color), var(--clr-neutral-300)); */
     color: var(--clr-text-300);
     text-size-adjust: var(--fs-500);
     text-decoration: none;
