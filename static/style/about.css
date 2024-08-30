@@ -95,9 +95,7 @@ header {
 }
 
 .wrapper {
-    /* background: linear-gradient(135deg, var(--clr-primary-700), var(--clr-secondary-500)); */
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,6 +170,7 @@ img {
   .card__article, .about-card, .social-media-card {
     flex: 1;
     margin: 10px;
+    
 }
 
 .card-image img {
@@ -273,6 +272,12 @@ img {
 
   .about-card, .social-media-card {
     display: none; 
+    flex: 1 1 calc(33.333% - 40px);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 0.35px blur;
+    border-radius: 8px;
 }
 
   .about-card {
@@ -318,6 +323,7 @@ img {
   background: var(--clr-primary-700);
   flex: 1;
   max-width: 30%;
+  text-align: center;
 }
 
 .social-media-card h3 {
@@ -378,6 +384,8 @@ img {
   }
 
   .persons {
+    display: flex;
+    flex-wrap: start;
     visibility: inherit;
     padding-top: 250px;
     margin: 20% auto;
