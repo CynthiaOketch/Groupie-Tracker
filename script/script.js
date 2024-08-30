@@ -33,71 +33,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // index page shuffle
 
-async function fetchData() {
-    const response = await fetch('https://groupietrackers.herokuapp.com/api');
-    const data = await response.json();
-    // console.log(data);
-    // return data;
-}
+// async function fetchData() {
+//     const response = await fetch('https://groupietrackers.herokuapp.com/api');
+//     const data = await response.json();
+//     // console.log(data);
+//     // return data;
+// }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+// }
 
-function displayCards(containerId, items, type) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = '';
+// function displayCards(containerId, items, type) {
+//     const container = document.getElementById(containerId);
+//     container.innerHTML = '';
 
-    items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
+//     items.forEach(item => {
+//         const card = document.createElement('div');
+//         card.className = 'card';
 
-        if (type === 'artist') {
-            card.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <h4>${item.name}</h4>
-            `;
-        } else if (type === 'concert') {
-            card.innerHTML = `
-                <h4>${item.title}</h4>
-                <p>Date: ${item.date}</p>
-                <p>Location: ${item.location}</p>
-            `;
-        } else if (type === 'location') {
-            card.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <h4>${item.name}</h4>
-            `;
-        }
+//         if (type === 'artist') {
+//             card.innerHTML = `
+//                 <img src="${item.image}" alt="${item.name}">
+//                 <h4>${item.name}</h4>
+//             `;
+//         } else if (type === 'concert') {
+//             card.innerHTML = `
+//                 <h4>${item.title}</h4>
+//                 <p>Date: ${item.date}</p>
+//                 <p>Location: ${item.location}</p>
+//             `;
+//         } else if (type === 'location') {
+//             card.innerHTML = `
+//                 <img src="${item.image}" alt="${item.name}">
+//                 <h4>${item.name}</h4>
+//             `;
+//         }
 
-        container.appendChild(card);
-    });
-}
+//         container.appendChild(card);
+//     });
+// }
 
-async function init() {
-    const data = await fetchData();
+// async function init() {
+//     const data = await fetchData();
 
-    // Prepare artists data
-    const artists = data.artists;
-    shuffleArray(artists);
-    displayCards('artists-list', artists, 'artist');
+//     // Prepare artists data
+//     const artists = data.artists;
+//     shuffleArray(artists);
+//     displayCards('artists-list', artists, 'artist');
 
-    // Prepare concert data
-    const concerts = data.dates.index.map(d => ({
-        title: `Concert on ${d.dates[0]}`,
-        date: d.dates[0],
-        location: data.relations.index.find(r => r.datesLocations[d.dates[0]]).datesLocations[d.dates[0]].join(', ')
-    }));
-    shuffleArray(concerts);
-    displayCards('concerts-list', concerts, 'concert');
+//     // Prepare concert data
+//     const concerts = data.dates.index.map(d => ({
+//         title: `Concert on ${d.dates[0]}`,
+//         date: d.dates[0],
+//         location: data.relations.index.find(r => r.datesLocations[d.dates[0]]).datesLocations[d.dates[0]].join(', ')
+//     }));
+//     shuffleArray(concerts);
+//     displayCards('concerts-list', concerts, 'concert');
 
-    // Prepare locations data
-    const locations = data.locations.index;
-    shuffleArray(locations);
-    displayCards('locations-list', locations, 'location');
-}
+//     // Prepare locations data
+//     const locations = data.locations.index;
+//     shuffleArray(locations);
+//     displayCards('locations-list', locations, 'location');
+// }
 
-init();
+// init();
