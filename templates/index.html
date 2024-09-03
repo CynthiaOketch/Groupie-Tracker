@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="/script/script.js" defer></script>
@@ -20,7 +19,7 @@
       <h1>Groupie Tracker</h1>
       <nav>
           <a href="/artists" action="/artists" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-headset"></i>Artists</a>
-          <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
+          <!-- <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a> -->
           <a href="/about" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="size: small;"></i>About Us</a>
       </nav>
       <div class="search-container">
@@ -35,41 +34,37 @@
       <section class="hero">
         <h1 class="fade-in-up">Explore music ...</h1>
         <p class="fade-in-up"></p>
-    </section>
+      </section>
     <hr>
 
     <section id="features" class="features">
-      <a href="/artists" class="feature fade-in-up clickable-link">
-        <i class="fas fa-users"></i>
-        <h3>Artists</h3>
-        <p>Connect directly with your beloved artists on their tours</p>
-        <div id="artists-list" class="cards-container"></div>
-    </a>
+      <div class="feature fade-in-up">
+        <a href="/artists" class="feature-link">
+            <i class="fas fa-users"></i>
+            <h3>Artists</h3>
+            <p>Connect directly with your beloved artists on their tours</p>
+            <div id="artists-list" class="cards-container"></div>
+        </a>
+    </div>
     
-
-      <a href="/concerts" class="feature fade-in-up clickable-link">
-          <i class="fas fa-microphone"></i>
-          <h3>Concerts</h3>
-          <p>Connect directly with your beloved artists on their tours</p>
-          <div id="concerts-list" class="cards-container"></div>
-      </a>
-      
-
-        <div class="feature fade-in-up">
-          <i class="fas fa-microphone"></i>
-          <h3>Relationss</h3>
-          <a href="/concerts" action="/concerts" method="get"></a>
-          <p>Connect directly with your beloved artists on their tours</p>
-          <div id="concerts-list" class="cards-container"></div>
-      </div>
-
-        <div class="feature fade-in-up">
+    <div class="feature fade-in-up">
+        <a href="/artists" class="feature-link">
+            <i class="fas fa-microphone"></i>
+            <h3>Concerts</h3>
+            <p>Find concerts and join the excitement</p>
+            <div id="concerts-list" class="cards-container"></div>
+        </a>
+    </div>
+    
+    <div class="feature fade-in-up">
+        <a href="/artists" class="feature-link">
             <i class="fas fa-globe-africa"></i>
             <h3>Locations</h3>
-            <a href="/locations" action="/locations" method="get"></a>
             <p>Sign up for a surreal experience</p>
             <div id="locations-list" class="cards-container"></div>
-        </div>
+        </a>
+    </div>
+    
     </section>
         <hr>
         

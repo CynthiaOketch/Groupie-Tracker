@@ -19,7 +19,7 @@
             <nav>
                 <a href="/" action="/" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-home"></i>Home</a>
                 <a href="/artists" action="/artists" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-headset"></i>Artists</a>
-                <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
+                <!-- <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a> -->
             </nav>
         </div>
         
@@ -28,7 +28,7 @@
       <div class="container">
         <div class="card__container">
           <article id="cynthia" class="card__article">
-            <img src="/static/images/cyn57031169.jpeg" alt="image" class="card__img">
+            <img src="/static/images/cache_m_IMG_6933.jpg" alt="image" class="card__img">
             <div class="card__data">
               <span class="card__description">Cynthia</span>
               <h2 class="card__title">The Great Developer</h2>
@@ -37,7 +37,7 @@
           </article>
     
           <article id="john-paul" class="card__article">
-            <img src="/static/images/cache_m_GSI-07310.jpg" alt="image" class="card__img">
+            <img src="/static/images/cache_m_IMG_6931.jpg" alt="image" class="card__img">
             <div class="card__data">
               <span class="card__description">John Paul</span>
               <h2 class="card__title">Backend Developer</h2>
@@ -46,7 +46,7 @@
           </article>
     
           <article id="joel" class="card__article">
-            <img src="/static/images/cache_m_IMG-20240318-WA0002.jpg" alt="image" class="card__img">
+            <img src="/static/images/cache_m_IMG_7022.jpg" alt="image" class="card__img">
             <div class="card__data">
               <span class="card__description">Joel</span>
               <h2 class="card__title">Frontend Nation</h2>
@@ -65,6 +65,14 @@
         <p>Her UI/UX design skills in creating intuitive and visually appealing user experiences are unmatched.</p>
         <p>Her expertise ensures that our website is not only functional but also user-friendly.</p>
       </div>
+      <div id="cynthia-details-social" class="social-media-card">
+        <h3>Social Media</h3>
+        <ul>
+            <li><a href="https://twitter.com/cynthia" target="_blank">Twitter</a></li>
+            <li><a href="https://linkedin.com/in/cynthia" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/cynthia" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
     
       <div id="john-paul-details" class="about-card">
         <!-- John Paul's detailed info here -->
@@ -73,6 +81,14 @@
         <p>His backend development skills in building scalable and efficient server-side solutions are unmatched.</p>
         <p>His skills ensures a smooth performance and reliable browsing experiences.</p>
       </div>
+      <div id="john-paul-details-social" class="social-media-card">
+        <h3>Social Media</h3>
+        <ul>
+            <li><a href="https://twitter.com/johnpaul" target="_blank">Twitter</a></li>
+            <li><a href="https://linkedin.com/in/johnpaul" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/JohnPaul" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
     
       <div id="joel-details" class="about-card">
         <!-- Joel's detailed info here -->
@@ -80,6 +96,14 @@
         <p>Joel is an apprentice software developer with expertise in frontend development and a passion for clean design.</p>
         <p>His enthusiasm for creating engaging web applications has been incorporated into this website; from visuals to smoothness, all-round engagement to unfathomable user experience.</p>
         <p>His expertise in frontend development and passion for clean design have been instrumental in shaping this project.</p>
+      </div>
+      <div id="joel-details-social" class="social-media-card">
+        <h3>Social Media</h3>
+        <ul>
+            <li><a href="https://twitter.com/joel" target="_blank">Twitter</a></li>
+            <li><a href="https://linkedin.com/in/joelamos" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/Murzuqisah" target="_blank">GitHub</a></li>
+        </ul>
       </div>
     </section>
     
@@ -92,67 +116,28 @@
 
 </html>
 <script>
-  document.querySelectorAll('.card__button').forEach(button => {
-      button.addEventListener('click', function(event) {
-          event.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
+document.querySelectorAll('.card__button').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetAboutCard = document.getElementById(targetId);
+        const targetSocialMediaCard = document.getElementById(targetId + '-social');
 
-          document.querySelectorAll('.about-card').forEach(card => {
-              card.style.display = 'none';
-          });
+        // Hide all about-cards and social-media-cards
+        document.querySelectorAll('.about-card, .social-media-card').forEach(card => {
+            card.style.display = 'none';
+        });
 
-          if (targetElement) {
-              targetElement.style.display = 'block';
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-      });
-  });
+        // Show the target about-card and social-media-card
+        if (targetAboutCard) {
+            targetAboutCard.style.display = 'block';
+            targetAboutCard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        if (targetSocialMediaCard) {
+            targetSocialMediaCard.style.display = 'block';
+        }
+    });
+});
+
 </script>
-
-
-
-<!-- <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
-      </div>
-      <h1>Groupie Tracker</h1>
-      <nav>
-        <a href="/" action="/" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-home-alt"></i>Home</a>
-        <a href="/artists" action="/artists" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-headset"></i>Artists</a>
-        <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <div class="team-members">
-            <div class="team-member-card">
-                <img src="/static/images/kenny-eliason-5afenxnLDjs-unsplash.jpg" alt="Joel Adero" class="member-image">
-                <div class="member-info">
-                    <h3><a href="https://github.com/Murzuqisah/" target="_blank">Joel Adero</a></h3>
-                    <p>Joel is an apprentice software developer with a knack for creating engaging web applications. His expertise in frontend development and passion for clean design have been instrumental in shaping this project.</p>
-                </div>
-            </div>
-            <div class="team-member-card">
-                <img src="/static/images/possessed-photography-g29arbbvPjo-unsplash.jpg" alt="JP" class="member-image">
-                <div class="member-info">
-                    <h3><a href="https://github.com/" target="_blank">JP</a></h3>
-                    <p>JP is an apprentice software developer whose backend skills in building scalable and efficient server-side solutions are unmatched. His skills ensure that our ASCII art generator performs smoothly and reliably.</p>
-                </div>
-            </div>
-            <div class="team-member-card">
-                <img src="/static/images/possessed-photography-JjGXjESMxOY-unsplash.jpg" alt="Cynthia" class="member-image">
-                <div class="member-info">
-                    <h3><a href="https://github.com/" target="_blank">Cynthia</a></h3>
-                    <p>Cynthia is an apprentice software developer whose UI/UX design skills in creating intuitive and visually appealing user experiences are unfathomable. Her design work ensures that our tool is not only functional but also user-friendly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-</body> -->
