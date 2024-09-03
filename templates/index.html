@@ -6,75 +6,57 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="/script/script.js" defer></script>
-    <link rel="stylesheet" href="/static/style/style.css">
     <link rel="stylesheet" href="../static/style/artist.css">
     <title>Groupie Tracker</title>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
-      </div>
-      <h1>Groupie Tracker</h1>
-      <nav>
-          <a href="/artists" action="/artists" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-headset"></i>Artists</a>
-          <!-- <a href="/concerts" action="/concerts" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-microphone"></i>Concerts</a> -->
-          <a href="/about" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="size: small;"></i>About Us</a>
-      </nav>
-      <div class="search-container">
-        <input type="text" id="search-input" placeholder="search ...">
-        <button type="button" id="search-btn">search</button>
-        <div id="suggestions" class="suggestions"></div>
-    </div>
-    </div>
-  </header>
 
-    <main>
-      <section class="hero">
-        <h1 class="fade-in-up">Explore music ...</h1>
-        <p class="fade-in-up"></p>
-      </section>
-    <hr>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/Mic Sticker by lord-sativa.jpeg" alt="logo" class="logo">
+            </div>
+            <h1>Groupie Tracker</h1>
+            <nav>
+                <a href="/" action="/" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-home"></i>Home</a>
+                <a href="/about" action="/about" method="get" class="cta-button fade-in-up"><i class="fa fa-fw fa-info" style="size: small;"></i>About Us</a>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="search ...">
+                <button type="button" id="search-btn">search</button>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+        </div>
+    </header><br>
 
-    <section id="features" class="features">
-      <div class="feature fade-in-up">
-        <a href="/artists" class="feature-link">
-            <i class="fas fa-users"></i>
-            <h3>Artists</h3>
-            <p>Connect directly with your beloved artists on their tours</p>
-            <div id="artists-list" class="cards-container"></div>
-        </a>
-    </div>
-    
-    <div class="feature fade-in-up">
-        <a href="/artists" class="feature-link">
-            <i class="fas fa-microphone"></i>
-            <h3>Concerts</h3>
-            <p>Find concerts and join the excitement</p>
-            <div id="concerts-list" class="cards-container"></div>
-        </a>
-    </div>
-    
-    <div class="feature fade-in-up">
-        <a href="/artists" class="feature-link">
-            <i class="fas fa-globe-africa"></i>
-            <h3>Locations</h3>
-            <p>Sign up for a surreal experience</p>
-            <div id="locations-list" class="cards-container"></div>
-        </a>
-    </div>
-    
+    <section class="view">
+        <ul class="cards">
+            {{ range $artist := .Data.Artists }}
+            <li>
+                <a href="/artists/{{$artist.ID}}" class="card">
+                    <img src="{{$artist.Image}}" alt="Band profile picture" class="card-image">
+                    <div class="card-overlay">
+                        <div class="card-details">
+                            <svg class="card-arc" xmlns="https://www.w3.org/2000/svg"><path/></svg>
+                            <img src="{{$artist.Image}}" alt="Band profile image" class="card-thumbnail">
+                            <div class="card-detail-text">
+                                <h3 class="card-title">{{$artist.Name}}</h3>
+                                <span class="card-creation-date">Started in {{$artist.CreationDate}}</span>
+                            </div>
+                        </div>
+                        <p class="card-description">{{$artist.Name}} produced their first album in {{$artist.FirstAlbum}}.</p>
+                    </div>
+                </a>
+            </li>
+            {{end}}
+        </ul>        
     </section>
-        <hr>
-        
-      </main>
-
-      <footer>
-        <div>
+    
+    <footer>
+        <div class="footer-container">
             <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
         </div>
     </footer>
-    
+
 </body>
 </html>
